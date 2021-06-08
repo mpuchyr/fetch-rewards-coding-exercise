@@ -16,17 +16,7 @@ function App() {
         .then(resData => {
           // filters out all data that doesn't have a name
           const filteredData = resData.filter(item => item.name && item.name.length > 0)
-          //sorts data by listId
-          const sortedData = filteredData.sort((a, b) => {
-            if (a.listId < b.listId) {
-              return -1
-            } else if (a.listId > b.listId) {
-              return 1
-            } else {
-              return 0
-            }
-          })
-          setData(sortedData)
+          setData(filteredData)
           setLoading(null)
         })
       } catch {
