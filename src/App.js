@@ -14,9 +14,7 @@ function App() {
         fetch('https://fetch-hiring.s3.amazonaws.com/hiring.json')
         .then(res => res.json())
         .then(resData => {
-          // filters out all data that doesn't have a name
-          const filteredData = resData.filter(item => item.name && item.name.length > 0)
-          setData(filteredData)
+          setData(resData)
           setLoading(null)
         })
       } catch {
