@@ -3,6 +3,9 @@
 This project was created for a Fetch Rewards coding exercise to retrieve data from a provided API and display
 the information in a sorted, easy-to-read list.
 
+The data is broken up into four separate sections, based on list id. The data is then sorted by each item's name
+and display in a list within that section.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
