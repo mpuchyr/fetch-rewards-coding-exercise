@@ -45,7 +45,7 @@ const DisplayData = ({ data }) => {
         dataToShow = [...dataToShow, {id: i, data: currentData}]
     }
 
-
+    // display the data, split up into sections
     const showData = (dataToShow) => {
         return dataToShow.map(data => {
             return (
