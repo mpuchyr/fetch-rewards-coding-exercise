@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import DisplayData from './components/DisplayData';
 import './App.css';
 
 function App() {
@@ -38,12 +39,11 @@ function App() {
     fetchData()
   }, [])
 
-  console.log(data)
-
   return (
     <div className="App">
       {loading && <h1>{loading}</h1>}
       {error && <h1>{error}</h1>}
+      <DisplayData data={data}/>
     </div>
   );
 }
