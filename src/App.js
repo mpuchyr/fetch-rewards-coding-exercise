@@ -7,12 +7,16 @@ function App() {
   const [error, setError] = useState(null)
   
   useEffect(() => {
+    // fetches data from the source and sets error message if data can't be retrieved
     const fetchData = () => {
       try {
         fetch('https://fetch-hiring.s3.amazonaws.com/hiring.json')
         .then(res => res.json())
         .then(resData => {
-          const sortedData = resData.sort((a, b) => {
+          // filters out all data that doesn't have a name
+          const filteredData = resData.filter(item => item.name && item.name.length > 0)
+          //sorts data by listId
+          const sortedData = filteredData.sort((a, b) => {
             if (a.listId < b.listId) {
               return -1
             } else if (a.listId > b.listId) {
@@ -26,6 +30,7 @@ function App() {
         })
       } catch {
         setError('There was a problem fetching the data')
+        setLoading(null)
       }
 
     }
