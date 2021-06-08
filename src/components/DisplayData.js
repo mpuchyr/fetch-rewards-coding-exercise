@@ -1,9 +1,11 @@
-import React, { useState} from 'react';
+import React from 'react';
 
 const DisplayData = ({ data }) => {
 
     let minListId = 1
     let maxListId = 0
+    
+    // filter out data without a name and set maxListId and minListId for use in future for loop
     const filteredData = data.filter((item) => {
         if (item.name && item.name.length > 0) {
             if (item.listId < minListId) {
@@ -13,9 +15,12 @@ const DisplayData = ({ data }) => {
                 maxListId = item.listId
             }
             return item
-        }
+        } else return null
     })
 
+
+    
+    // sort the data by list id using previously set maxListId and minListId
     let dataToShow = []
 
     for (let i = minListId; i <= maxListId; i++) {
@@ -41,19 +46,15 @@ const DisplayData = ({ data }) => {
     const showData = (dataToShow) => {
         return dataToShow.map(data => {
             return (
-                <div>
+                <div className="list-container" key={data.id}>
                     <h1>List Id: {data.id}</h1>
                     <ul>
-                        {data.data.map(item => <li>Id: {item.id} List Id:{item.listId} Name:{item.name}</li>)}
+                        {data.data.map(item => <li key={item.id}>Id: {item.id} List Id:{item.listId} Name: {item.name}</li>)}
                     </ul>
                 </div>
             )
         })
     }
-
-
-
-
 
 
     return (
