@@ -16,8 +16,7 @@ const DisplayData = ({ data }) => {
         }
     }) 
 
-    console.log(sortedData)
-    console.log(maxListId)
+    
 
 
 
