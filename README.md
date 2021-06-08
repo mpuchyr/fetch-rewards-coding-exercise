@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Fetch Rewards Coding Exercise
+
+This project was created for a Fetch Rewards coding exercise to retrieve data from a provided API and display
+the information in a sorted, easy-to-read list.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
