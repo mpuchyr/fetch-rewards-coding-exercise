@@ -31,7 +31,8 @@ function App() {
     <div className="App">
       {loading && <h1>{loading}</h1>}
       {error && <h1>{error}</h1>}
-      <DisplayData data={data}/>
+      {/*prevent data from attempting to display if there is an error*/}
+      {error === null && <DisplayData data={data}/>}
     </div>
   );
 }

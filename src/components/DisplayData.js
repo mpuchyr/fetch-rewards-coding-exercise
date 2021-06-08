@@ -8,6 +8,7 @@ const DisplayData = ({ data }) => {
     // filter out data without a name and set maxListId and minListId for use in future for loop
     const filteredData = data.filter((item) => {
         if (item.name && item.name.length > 0) {
+            // set minListId and maxListId now to prevent needing another loop iteration
             if (item.listId < minListId) {
                 minListId = item.listId
             }
@@ -26,6 +27,7 @@ const DisplayData = ({ data }) => {
     for (let i = minListId; i <= maxListId; i++) {
         const currentData = filteredData.filter(item => item.listId === i)
             .sort((a, b) => {
+                // split the names to sort them in proper numerical order
                 a = a.name.split(' ')
                 b = b.name.split(' ')
 
@@ -43,13 +45,14 @@ const DisplayData = ({ data }) => {
         dataToShow = [...dataToShow, {id: i, data: currentData}]
     }
 
+
     const showData = (dataToShow) => {
         return dataToShow.map(data => {
             return (
                 <div className="list-container" key={data.id}>
-                    <h1>List Id: {data.id}</h1>
+                    <h1>List ID: {data.id}</h1>
                     <ul>
-                        {data.data.map(item => <li key={item.id}>Id: {item.id} List Id:{item.listId} Name: {item.name}</li>)}
+                        {data.data.map(item => <li key={item.id}>ID: {item.id} | List ID: {item.listId} | Name: {item.name}</li>)}
                     </ul>
                 </div>
             )
@@ -59,8 +62,7 @@ const DisplayData = ({ data }) => {
 
     return (
         <div>
-            Display Data Placeholder
-            {showData(dataToShow)}
+            {dataToShow.length > 0 && showData(dataToShow)}
         </div>
     )
 }
